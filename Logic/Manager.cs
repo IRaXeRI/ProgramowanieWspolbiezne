@@ -12,14 +12,14 @@ namespace Logic
         private readonly int width;
         private readonly int length;
         private readonly int radius;
-        private readonly Data.APIData data;
+        private readonly APIData data;
         private Timer? timer;
 
         public Manager(int initWidth, int initLength, int initRadius) {
             width = initWidth;
             length = initLength;
             radius = initRadius;
-            data = Data.APIData.PrepareRepository();
+            data = APIData.PrepareRepository();
         }
 
 

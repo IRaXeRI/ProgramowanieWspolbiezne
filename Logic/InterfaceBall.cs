@@ -12,7 +12,7 @@ namespace Logic;
         public abstract int CoordY { get; set;}
         public abstract int VelX { get; set; }
         public abstract int VelY { get; set; }
-        public abstract int Radius { get;}
+        public abstract int Radius { get; set; }
         public abstract void Update(int boardLength, int boardWidth);
         public abstract event PropertyChangedEventHandler? PropertyChanged;
     }

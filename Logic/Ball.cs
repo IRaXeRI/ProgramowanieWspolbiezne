@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Logic.Data;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -8,18 +9,13 @@ using System.Threading.Tasks;
 
 namespace Logic
 {
-    internal class Ball : InterfaceBall, INotifyPropertyChanged
+    internal class Ball : BallData, INotifyPropertyChanged
     {
-        private int coordX;
-        private int coordY;
-        private int velocityX;
-        private int velocityY;
-        private int radius;
-        public override event PropertyChangedEventHandler? PropertyChanged;
-
-        public override int CoordX {
+        public override int CoordX
+        {
             get { return coordX; }
-            set {
+            set
+            {
                 if (coordX == value)
                     return;
                 coordX = value;
@@ -27,9 +23,11 @@ namespace Logic
             }
         }
 
-        public override int CoordY {
+        public override int CoordY
+        {
             get { return coordY; }
-            set {
+            set
+            {
                 if (coordY == value)
                     return;
                 coordY = value;
@@ -37,9 +35,11 @@ namespace Logic
             }
         }
 
-        public override int VelX {
+        public override int VelX
+        {
             get { return velocityX; }
-            set {
+            set
+            {
                 if (velocityX == value)
                     return;
                 velocityX = value;
@@ -47,9 +47,11 @@ namespace Logic
             }
         }
 
-        public override int VelY {
+        public override int VelY
+        {
             get { return velocityY; }
-            set {
+            set
+            {
                 if (velocityY == value)
                     return;
                 velocityY = value;
@@ -57,8 +59,10 @@ namespace Logic
             }
         }
 
-        public override int Radius {
+        public override int Radius
+        {
             get { return radius; }
+            set { radius = value; RaisePropertyChanged(); }
         }
 
         public Ball(int initCoordX, int initCoordY, int initVelX, int initVelY, int initRadius)
@@ -67,8 +71,10 @@ namespace Logic
             CoordY = initCoordY;
             VelX = initVelX;
             VelY = initVelY;
-            radius = initRadius;
+            Radius = initRadius;
         }
+
+        public override event PropertyChangedEventHandler? PropertyChanged;
 
         private void RaisePropertyChanged([CallerMemberName] string? propertyName = null)
         {
@@ -78,16 +84,16 @@ namespace Logic
         public override void Update(int boardLength, int boardWidth)
         {
             //change X
-            if (CoordX + VelX + radius >= boardLength) {
-                int temp = boardLength - CoordX - radius;
-                CoordX = boardLength - radius;
+            if (CoordX + VelX + Radius >= boardLength) {
+                int temp = boardLength - CoordX - Radius;
+                CoordX = boardLength - Radius;
                 temp = VelX - temp;
                 CoordX -= temp;
                 VelX *= (-1);
             }
-            else if (CoordX + VelX <= radius) {
-                int temp = CoordX - radius;
-                CoordX = radius;
+            else if (CoordX + VelX <= Radius) {
+                int temp = CoordX - Radius;
+                CoordX = Radius;
                 temp = VelX * (-1) - temp;
                 CoordX += temp;
                 VelX *= (-1);
@@ -97,16 +103,16 @@ namespace Logic
             }
 
             //change Y
-            if (CoordY + VelY + radius >= boardWidth) {
-                int temp = boardWidth - CoordY - radius;
-                CoordY = boardWidth - radius;
+            if (CoordY + VelY + Radius >= boardWidth) {
+                int temp = boardWidth - CoordY - Radius;
+                CoordY = boardWidth - Radius;
                 temp = VelY - temp;
                 CoordY -= temp;
                 VelY *= (-1);
             }
-            else if (CoordY + VelY <= radius) {
-                int temp = CoordY - radius;
-                CoordY = radius;
+            else if (CoordY + VelY <= Radius) {
+                int temp = CoordY - Radius;
+                CoordY = Radius;
                 temp = VelY * (-1) - temp;
                 CoordY += temp;
                 VelY *= (-1);
