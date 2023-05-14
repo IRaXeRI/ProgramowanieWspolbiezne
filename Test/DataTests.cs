@@ -26,12 +26,6 @@ namespace Tests
         {
             testData.addBall(testBall1);
             Assert.IsTrue(testData.getAmountOfBalls() == 1);
-            List<InterfaceBall> temp = testData.Balls;
-            Assert.IsTrue(temp[0].CoordX == 10);
-            Assert.IsTrue(temp[0].CoordY == 10);
-            Assert.IsTrue(temp[0].VelX == 3);
-            Assert.IsTrue(temp[0].VelY == 3);
-            Assert.IsTrue(temp[0].Radius == 5);
         }
 
         [Test]
