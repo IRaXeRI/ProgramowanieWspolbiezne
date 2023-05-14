@@ -6,7 +6,7 @@ namespace Tests
     public class DataTests
     {
         APIData testData;
-        InterfaceBall testBall1 = InterfaceBall.CreateBall(10, 10, 3, 3, 5);
+        InterfaceBall testBall1 = InterfaceBall.CreateBall(10, 10, 3, 3, 5, 5, 100, 100);
         [SetUp]
         public void Setup()
         {

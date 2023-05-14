@@ -9,28 +9,23 @@ namespace Data
         public override List<InterfaceBall> Balls { get => balls; }
 
 
-        public override void addBall(InterfaceBall b)
-        {
+        public override void addBall(InterfaceBall b) {
             balls.Add(b);
         }
 
-        public override void Connect()
-        {
+        public override void Connect() {
             throw new NotImplementedException();
         }
 
-        public override int getAmountOfBalls()
-        {
+        public override int getAmountOfBalls() {
             return balls.Count;
         }
 
-        public override void removeAllBalls()
-        {
+        public override void removeAllBalls() {
             balls.Clear();
         }
 
-        public override void removeBall(InterfaceBall b)
-        {
+        public override void removeBall(InterfaceBall b) {
             balls.Remove(b);
         }
     }

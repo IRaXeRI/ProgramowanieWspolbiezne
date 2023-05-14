@@ -8,7 +8,7 @@ internal class ModelBall : InterfaceModelBall, INotifyPropertyChanged
 {
     private int coordX;
     private int coordY;
-    private int radius;
+    private double radius;
 
     public override int CoordX
     {
@@ -30,7 +30,7 @@ internal class ModelBall : InterfaceModelBall, INotifyPropertyChanged
         }
     }
 
-    public override int Radius
+    public override double Radius
     {
         get => radius;
     }
@@ -41,7 +41,7 @@ internal class ModelBall : InterfaceModelBall, INotifyPropertyChanged
     {
         CoordX = initX;
         CoordY = initY;
-        radius = initRadius;
+        radius = (double) initRadius;
     }
 
     public override void UpdateBall(Object s, PropertyChangedEventArgs e)

@@ -17,7 +17,7 @@ namespace Tests
         public void addBallTest()
         {
             Assert.True(testManager.GetAllBalls().Count == 0);
-            testManager.CreateBall();
+            testManager.CreateBalls(1);
             Assert.True(testManager.GetAllBalls().Count == 1);
             Assert.True(testManager.GetAllBalls()[0].CoordX >= 1);
             Assert.True(testManager.GetAllBalls()[0].CoordX <= 10);
@@ -33,10 +33,12 @@ namespace Tests
         public void updateTest()
         {
             testManager.clearRepository();
-            testManager.CreateControledBall(5,5,1,-1,1);
+            testManager.CreateControledBall(5,5,1,-1,1,1);
             testManager.Update(null);
             Assert.True(testManager.GetAllBalls()[0].CoordX == 6);
             Assert.True(testManager.GetAllBalls()[0].CoordY == 4);
         }
+
+        
     }
 }

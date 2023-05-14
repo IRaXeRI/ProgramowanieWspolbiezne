@@ -58,7 +58,6 @@ namespace Presentation.ViewModel {
 
                 model.CreateNBalls(newN);
                 RaisePropertyChanged(nameof(Balls));
-                model.StartBalls();
                 ChangeButtonStatus();
             }
             catch (Exception) {
@@ -70,7 +69,6 @@ namespace Presentation.ViewModel {
         private void Stop() {
             model.ClearBalls();
             RaisePropertyChanged(nameof(Balls));
-            model.StopBalls();
             ChangeButtonStatus();
         }
 

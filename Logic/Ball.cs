@@ -9,69 +9,33 @@ using System.Threading.Tasks;
 
 namespace Logic
 {
-    internal class Ball : BallData, INotifyPropertyChanged
+    internal class Ball : InterfaceBall, INotifyPropertyChanged
     {
-        public override int CoordX
+        private InterfaceBallData data;
+
+        public override int CoordX { get { return data.CoordX; } set { data.CoordX = value; RaisePropertyChanged(); } }
+        public override int CoordY { get { return data.CoordY; } set { data.CoordY = value; RaisePropertyChanged(); } }
+        public override int VelX { get { return data.VelocityX; } set { data.VelocityX = value; RaisePropertyChanged(); } }
+        public override int VelY { get { return data.VelocityY; } set { data.VelocityY = value; RaisePropertyChanged(); } }
+        public override int Radius { get { return data.Radius; } set { data.Radius = value; } }
+        public override int Weight { get { return data.Weight; } set { data.Weight = value; } }
+        public override bool Enabled { get => data.Enabled; set => data.Enabled = value; }
+
+        public Ball(int initCoordX, int initCoordY, int initVelX, int initVelY, int initRadius, int initWeight, int initBoardLength, int initBoardWidth)
         {
-            get { return coordX; }
-            set
+            data = InterfaceBallData.CreateBallData(initCoordX, initCoordY, initVelX, initVelY, initRadius, initWeight, initBoardLength, initBoardWidth);
+            Thread ballThread = new Thread(StartMovement);
+            ballThread.IsBackground = true;
+            ballThread.Start();
+        }
+
+        public override void StartMovement()
+        {
+            while (Enabled)
             {
-                if (coordX == value)
-                    return;
-                coordX = value;
-                RaisePropertyChanged();
+                Update(data.BoardLength,data.BoardWidth);
+                Thread.Sleep(8);
             }
-        }
-
-        public override int CoordY
-        {
-            get { return coordY; }
-            set
-            {
-                if (coordY == value)
-                    return;
-                coordY = value;
-                RaisePropertyChanged();
-            }
-        }
-
-        public override int VelX
-        {
-            get { return velocityX; }
-            set
-            {
-                if (velocityX == value)
-                    return;
-                velocityX = value;
-                RaisePropertyChanged();
-            }
-        }
-
-        public override int VelY
-        {
-            get { return velocityY; }
-            set
-            {
-                if (velocityY == value)
-                    return;
-                velocityY = value;
-                RaisePropertyChanged();
-            }
-        }
-
-        public override int Radius
-        {
-            get { return radius; }
-            set { radius = value; RaisePropertyChanged(); }
-        }
-
-        public Ball(int initCoordX, int initCoordY, int initVelX, int initVelY, int initRadius)
-        {
-            CoordX = initCoordX;
-            CoordY = initCoordY;
-            VelX = initVelX;
-            VelY = initVelY;
-            Radius = initRadius;
         }
 
         public override event PropertyChangedEventHandler? PropertyChanged;
@@ -84,42 +48,9 @@ namespace Logic
         public override void Update(int boardLength, int boardWidth)
         {
             //change X
-            if (CoordX + VelX + Radius >= boardLength) {
-                int temp = boardLength - CoordX - Radius;
-                CoordX = boardLength - Radius;
-                temp = VelX - temp;
-                CoordX -= temp;
-                VelX *= (-1);
-            }
-            else if (CoordX + VelX <= Radius) {
-                int temp = CoordX - Radius;
-                CoordX = Radius;
-                temp = VelX * (-1) - temp;
-                CoordX += temp;
-                VelX *= (-1);
-            }
-            else {
-                CoordX += VelX;
-            }
-
+            CoordX += VelX;
             //change Y
-            if (CoordY + VelY + Radius >= boardWidth) {
-                int temp = boardWidth - CoordY - Radius;
-                CoordY = boardWidth - Radius;
-                temp = VelY - temp;
-                CoordY -= temp;
-                VelY *= (-1);
-            }
-            else if (CoordY + VelY <= Radius) {
-                int temp = CoordY - Radius;
-                CoordY = Radius;
-                temp = VelY * (-1) - temp;
-                CoordY += temp;
-                VelY *= (-1);
-            }
-            else {
-                CoordY += VelY;
-            }
+            CoordY += VelY;
         }
     }
 }

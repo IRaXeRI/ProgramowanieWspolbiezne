@@ -9,7 +9,7 @@ namespace Tests
         [SetUp]
         public void Setup()
         {
-            testBall = InterfaceBall.CreateBall(10,10,3,3,5);
+            testBall = InterfaceBall.CreateBall(10,10,3,3,5, 5, 100, 100);
         }
 
         [Test]
@@ -46,7 +46,7 @@ namespace Tests
         [Test]
         public void moveInXPositiveTest()
         {
-            testBall = InterfaceBall.CreateBall(5, 5, 3, 3, 1);
+            testBall = InterfaceBall.CreateBall(5, 5, 3, 3, 1, 1, 100, 100);
             testBall.Update(10, 10);
             Assert.True(testBall.CoordX == 8);
         }
@@ -54,7 +54,7 @@ namespace Tests
         [Test]
         public void moveInXNegativeTest()
         {
-            testBall = InterfaceBall.CreateBall(6, 6, -2, -2, 1);
+            testBall = InterfaceBall.CreateBall(6, 6, -2, -2, 1, 1, 100, 100);
             testBall.Update(10, 10);
             Assert.True(testBall.CoordX == 4);
         }
@@ -62,7 +62,7 @@ namespace Tests
         [Test]
         public void moveInYPositiveTest()
         {
-            testBall = InterfaceBall.CreateBall(6, 6, 2, 2, 1);
+            testBall = InterfaceBall.CreateBall(6, 6, 2, 2, 1, 1, 100, 100);
             testBall.Update(10, 10);
             Assert.True(testBall.CoordY == 8);
         }
@@ -70,7 +70,7 @@ namespace Tests
         [Test]
         public void moveInYNegativeTest()
         {
-            testBall = InterfaceBall.CreateBall(6, 6, -2, -2, 1);
+            testBall = InterfaceBall.CreateBall(6, 6, -2, -2, 1, 1, 100, 100);
             testBall.Update(10, 10);
             Assert.True(testBall.CoordY == 4);
         }
@@ -78,7 +78,7 @@ namespace Tests
         [Test]
         public void upBorderTest()
         {
-            testBall = InterfaceBall.CreateBall(3, 3, -4, -4, 1);
+            testBall = InterfaceBall.CreateBall(3, 3, -4, -4, 1, 1, 100, 100);
             testBall.Update(10, 10);
             Assert.True(testBall.CoordY == 3);
         }
@@ -86,7 +86,7 @@ namespace Tests
         [Test]
         public void downBorderTest()
         {
-            testBall = InterfaceBall.CreateBall(7, 7, 3, 3, 1);
+            testBall = InterfaceBall.CreateBall(7, 7, 3, 3, 1, 1, 100, 100);
             testBall.Update(10, 10);
             Assert.True(testBall.CoordY == 8);
         }
@@ -94,7 +94,7 @@ namespace Tests
         [Test]
         public void leftBorderTest()
         {
-            testBall = InterfaceBall.CreateBall(3, 3, -4, -4, 1);
+            testBall = InterfaceBall.CreateBall(3, 3, -4, -4, 1, 1, 100, 100);
             testBall.Update(10, 10);
             Assert.True(testBall.CoordX == 3);
         }
@@ -102,7 +102,7 @@ namespace Tests
         [Test]
         public void rightBorderTest()
         {
-            testBall = InterfaceBall.CreateBall(7, 7, 3, 3, 1);
+            testBall = InterfaceBall.CreateBall(7, 7, 3, 3, 1, 1, 100, 100);
             testBall.Update(10, 10);
             Assert.True(testBall.CoordY == 8);
         }

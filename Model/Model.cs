@@ -33,29 +33,16 @@ internal class ModelType : APIModel
 
     public override void CreateBall()
     {
-        logic.CreateBall();
+        logic.CreateBalls(1);
     }
 
     public override void CreateNBalls(int n)
     {
-        for (int i = 0; i < n; i++)
-        {
-            logic.CreateBall();
-        }
+        logic.CreateBalls(n);
     }
 
     public override void ClearBalls()
     {
         logic.clearRepository();
-    }
-
-    public override void StartBalls()
-    {
-        logic.Start();
-    }
-
-    public override void StopBalls()
-    {
-        logic.Stop();
     }
 }

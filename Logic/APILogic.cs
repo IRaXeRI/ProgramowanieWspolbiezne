@@ -14,12 +14,10 @@ namespace Logic
         }
 
         public abstract List<InterfaceBall> GetRepositoryList();
-        public abstract void Start();
-        public abstract void Stop();
         public abstract void clearRepository();
         public abstract List<InterfaceBall> GetAllBalls();
-        public abstract void CreateBall();
-        public abstract void CreateControledBall(int x, int y, int vX, int vY, int rad);
+        public abstract void CreateBalls(int n);
+        public abstract void CreateControledBall(int x, int y, int vX, int vY, int rad, int wei);
         public abstract void Update(Object? stateInfo);
 
     }

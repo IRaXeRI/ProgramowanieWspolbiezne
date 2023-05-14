@@ -14,7 +14,7 @@ public abstract class InterfaceModelBall
 
     public abstract int CoordY { get; set; }
 
-    public abstract int Radius { get;}
+    public abstract double Radius { get;}
 
     public abstract void UpdateBall(Object s, PropertyChangedEventArgs e);
 }
