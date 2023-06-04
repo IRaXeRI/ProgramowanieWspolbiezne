@@ -14,7 +14,6 @@ namespace Logic.Data.Logger {
         private object fileBarrier = new();
         private Timer Timer;
         private bool enabled = true;
-        private Stopwatch measure = new Stopwatch();
         private Queue<string> messages = new Queue<string>();
 
         public bool Enabled { get => enabled; set => enabled = value; }
@@ -47,13 +46,8 @@ namespace Logic.Data.Logger {
         }
 
         private void LogLoop(Object? stateInfo) {
-            while (Enabled) {
-                measure.Reset();
-                if (Messages.Count>0) {
-                    measure.Start();
-                    Log(Messages.Dequeue());
-                    measure.Stop();
-                }
+            if (Messages.Count>0) {
+                Log(Messages.Dequeue());
             }
         }
 
