@@ -27,6 +27,8 @@ namespace Logic.Data
         public abstract int BoardWidth { get; set; }
         public abstract bool Enabled { get; set; }
 
+        public abstract event PropertyChangedEventHandler? PropertyChanged;
+        public abstract event PropertyChangedEventHandler? LoggerPropertyChanged;
 
     }
 }

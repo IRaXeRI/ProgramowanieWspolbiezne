@@ -7,9 +7,5 @@
     <Nullable>enable</Nullable>
 	<GenerateProgramFile>false</GenerateProgramFile>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Folder Include="Data\" />
-  </ItemGroup>
 	
 </Project>

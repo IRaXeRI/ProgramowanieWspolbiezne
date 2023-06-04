@@ -13,13 +13,14 @@ namespace Logic
     {
         private InterfaceBallData data;
 
-        public override int CoordX { get { return data.CoordX; } set { data.CoordX = value; RaisePropertyChanged(); } }
-        public override int CoordY { get { return data.CoordY; } set { data.CoordY = value; RaisePropertyChanged(); } }
-        public override int VelX { get { return data.VelocityX; } set { data.VelocityX = value; RaisePropertyChanged(); } }
-        public override int VelY { get { return data.VelocityY; } set { data.VelocityY = value; RaisePropertyChanged(); } }
-        public override int Radius { get { return data.Radius; } set { data.Radius = value; } }
-        public override int Weight { get { return data.Weight; } set { data.Weight = value; } }
-        public override bool Enabled { get => data.Enabled; set => data.Enabled = value; }
+        public override int CoordX { get { return Data.CoordX; } set { Data.CoordX = value; RaisePropertyChanged(); } }
+        public override int CoordY { get { return Data.CoordY; } set { Data.CoordY = value; RaisePropertyChanged(); } }
+        public override int VelX { get { return Data.VelocityX; } set { Data.VelocityX = value; RaisePropertyChanged(); } }
+        public override int VelY { get { return Data.VelocityY; } set { Data.VelocityY = value; RaisePropertyChanged(); } }
+        public override int Radius { get { return Data.Radius; } set { Data.Radius = value; } }
+        public override int Weight { get { return Data.Weight; } set { Data.Weight = value; } }
+        public override bool Enabled { get => Data.Enabled; set => Data.Enabled = value; }
+        public override InterfaceBallData Data { get => data; }
 
         public Ball(int initCoordX, int initCoordY, int initVelX, int initVelY, int initRadius, int initWeight, int initBoardLength, int initBoardWidth)
         {
@@ -33,7 +34,7 @@ namespace Logic
         {
             while (Enabled)
             {
-                Update(data.BoardLength,data.BoardWidth);
+                Update(Data.BoardLength,Data.BoardWidth);
                 Thread.Sleep(8);
             }
         }

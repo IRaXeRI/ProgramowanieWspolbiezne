@@ -37,6 +37,7 @@ namespace Logic {
                 int vY = rand.Next(-5, 5);
                 int we = rand.Next(1, 10);
                 Ball newBall = new Ball(cX, cY, vX, vY, radius, we, length, width);
+                
                 newBall.PropertyChanged += checkCollison;
                 data.addBall(newBall);
             }

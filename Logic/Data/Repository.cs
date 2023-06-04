@@ -4,6 +4,8 @@ namespace Data
 {
     internal class Repository : APIData
     {
+        private Logic.Data.Logger.Logger logger = new Logic.Data.Logger.Logger();
+
         private List<InterfaceBall> balls = new();
 
         public override List<InterfaceBall> Balls { get => balls; }
@@ -11,6 +13,7 @@ namespace Data
 
         public override void addBall(InterfaceBall b) {
             balls.Add(b);
+            b.Data.LoggerPropertyChanged += logger.LogCreateMessage;
         }
 
         public override void Connect() {

@@ -1,4 +1,5 @@
 ﻿
+using Logic.Data;
 using System.ComponentModel;
 
 namespace Logic;
@@ -16,6 +17,7 @@ namespace Logic;
         public abstract int Weight { get; set; }
         public abstract bool Enabled { get; set; }
         public abstract void Update(int boardLength, int boardWidth);
+        public abstract InterfaceBallData Data { get; }
         public abstract void StartMovement();
         public abstract event PropertyChangedEventHandler? PropertyChanged;
     }

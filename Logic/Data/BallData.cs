@@ -10,8 +10,7 @@ using Logic;
 
 namespace Logic.Data
 {
-    public class BallData : InterfaceBallData
-    {
+    public class BallData : InterfaceBallData, INotifyPropertyChanged {
         private int coordX;
         private int coordY;
         private int velocityX;
@@ -36,8 +35,8 @@ namespace Logic.Data
             this.Enabled = true;
         }
 
-        public override int CoordX { get => coordX; set => coordX = value; }
-        public override int CoordY { get => coordY; set => coordY = value; }
+        public override int CoordX { get => coordX; set { LogChange(CoordX, value); coordX = value; } }
+        public override int CoordY { get => coordY; set { LogChange(CoordY, value); coordY = value; } }
         public override int VelocityX { get => velocityX; set => velocityX = value; }
         public override int VelocityY { get => velocityY; set => velocityY = value; }
         public override int Radius { get => radius; set => radius = value; }
@@ -45,5 +44,13 @@ namespace Logic.Data
         public override int BoardLength { get => boardLength; set => boardLength = value; }
         public override int BoardWidth { get => boardWidth; set => boardWidth = value; }
         public override bool Enabled { get => enabled; set => enabled = value; }
+
+        public override event PropertyChangedEventHandler? PropertyChanged;
+
+        public override event PropertyChangedEventHandler? LoggerPropertyChanged;
+
+        public void LogChange(object oldValue, object newValue, [CallerMemberName] string? propertyName = null) {
+            LoggerPropertyChanged?.Invoke(this, new Logger.LoggerArguments(propertyName, oldValue, newValue));
+        }
     }
 }
